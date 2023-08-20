@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,29 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+//    return view('welcome');
+//    $users = DB::select("select * from users");
+
+//    $user = DB::insert('insert into users (name, email, password) values (?,?,?)', ['Nver3', 'nver3@gmail.com', '12345678']);
+
+//    $user = DB::update("update users set name = ? where email=?", ['NverNew', 'nver3@gmail.com']);
+
+//    $user = DB::delete('delete from users where email = ?', ['nver3@gmail.com']);
+
+//    with Query Builder
+
+//    $user = DB::table('users')->insert([
+//        'name' => 'Nver222',
+//        'email' => 'nver222@gmail.com',
+//        'password' => '12345678',
+//    ]);
+
+//    DB::table('users')->delete();
+//    DB::table('users')->update(['name' => 'Nver78787899']);
+
+    $users = DB::table('users')->pluck('email');
+
+    dd($users);
 });
 
 Route::get('/dashboard', function () {
@@ -28,4 +51,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,10 +46,18 @@ Route::get('/', function () {
 
 //    $users = User::get();
 
-    $users = User::all();
+//    User::create([
+//        'name' => 'Nver999',
+//        'email' => 'nver999@gmail.com',
+//        'password' => '12345678',
+//    ]);
+
+//    $users = User::all();
 //    $user->delete();
 
-    dd($users);
+    $user = User::find(13);
+
+    dd($user->name);
 });
 
 Route::get('/dashboard', function () {

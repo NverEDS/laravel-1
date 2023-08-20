@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +37,16 @@ Route::get('/', function () {
 //    DB::table('users')->delete();
 //    DB::table('users')->update(['name' => 'Nver78787899']);
 
-    $users = DB::table('users')->pluck('email');
+//    $user = User::find(15);
+//
+//    $user->update([
+//        'name' => 'Just Nver'
+//    ]);
+
+//    $users = User::get();
+
+    $users = User::all();
+//    $user->delete();
 
     dd($users);
 });
